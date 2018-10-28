@@ -1,0 +1,21 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+<button (click)="buttonMoveMode()">SWITCHTOMoveMode</button>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" [attr.width]='width'
+    [attr.height]='height' (click)="setCircleLocation($event)" (mousemove)="mouseMove($event)">
+      <ng-template ngFor let-shape [ngForOf]="shapes">
+        <circle *ngIf="shape.constructor.name === 'Circle'" [attr.cx]='shape.x' [attr.cy]='shape.y' [attr.r]='shape.r'
+          [ngStyle]="shape.style" id="{{shape.selfId}}"></circle>
+        <line *ngIf="shape.constructor.name === 'Line'" [attr.x1]='shape.x1' [attr.y1]='shape.y1' [attr.x2]='shape.x2'
+          [attr.y2]='shape.y2' [ngStyle]="shape.style" id="{{shape.selfId}}"></line>
+        <text *ngIf="shape.constructor.name === 'Text'" [attr.x]='shape.x' [attr.y]='shape.y' [ngStyle]="shape.style"
+          id="{{shape.selfId}}">{{shape.text}}</text>
+        <ellipse *ngIf="shape.constructor.name === 'Ellipse'" [attr.cx]='shape.x' [attr.cy]='shape.y' [attr.rx]='shape.rx'
+          [attr.ry]='shape.ry' [ngStyle]="shape.style" id="{{shape.selfId}}"></ellipse>
+        <rect *ngIf="shape.constructor.name === 'Rect'" [attr.x]='shape.x' [attr.y]='shape.y' [attr.width]='shape.width'
+          [attr.height]='shape.height' [ngStyle]="shape.style" id="{{shape.selfId}}"></rect>
+        <path *ngIf="shape.constructor.name === 'Path'" [attr.d]='shape.d' [ngStyle]="shape.style" id="{{shape.selfId}}"></path>
+      </ng-template>
+  </svg>
+</div>
+
